@@ -17,16 +17,21 @@ import { Logo } from './logo';
 import { NavItem } from './nav-item';
 
 const items = [
-  {
+  /*{
     href: '/',
     icon: (<ChartBarIcon fontSize="small" />),
     title: 'Dashboard'
-  },
+  },*/
   {
+    href: '/home',
+    icon: (<ChartBarIcon fontSize="small" />),
+    title: 'Home'
+  },
+  /*{
     href: '/customers',
     icon: (<UsersIcon fontSize="small" />),
     title: 'Customers'
-  },
+  },*/
  /* {
     href: '/products',
     icon: (<ShoppingBagIcon fontSize="small" />),
@@ -161,7 +166,55 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
-        <Divider sx={{ borderColor: '#2D3748' }} />
+        
+      </Box>
+    </>
+  );
+
+  if (lgUp) {
+    return (
+      <Drawer
+        anchor="left"
+        open
+        PaperProps={{
+          sx: {
+            backgroundColor: 'neutral.900',
+            color: '#FFFFFF',
+            width: 280
+          }
+        }}
+        variant="permanent"
+      >
+        {content}
+      </Drawer>
+    );
+  }
+
+  return (
+    <Drawer
+      anchor="left"
+      onClose={onClose}
+      open={open}
+      PaperProps={{
+        sx: {
+          backgroundColor: 'neutral.900',
+          color: '#FFFFFF',
+          width: 280
+        }
+      }}
+      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+      variant="temporary"
+    >
+      {content}
+    </Drawer>
+  );
+};
+
+DashboardSidebar.propTypes = {
+  onClose: PropTypes.func,
+  open: PropTypes.bool
+};
+/*<Divider sx={{ borderColor: '#2D3748' }} />
         <Box
           sx={{
             px: 2,
@@ -211,51 +264,4 @@ export const DashboardSidebar = (props) => {
               Pro Live Preview
             </Button>
           </NextLink>
-        </Box>
-      </Box>
-    </>
-  );
-
-  if (lgUp) {
-    return (
-      <Drawer
-        anchor="left"
-        open
-        PaperProps={{
-          sx: {
-            backgroundColor: 'neutral.900',
-            color: '#FFFFFF',
-            width: 280
-          }
-        }}
-        variant="permanent"
-      >
-        {content}
-      </Drawer>
-    );
-  }
-
-  return (
-    <Drawer
-      anchor="left"
-      onClose={onClose}
-      open={open}
-      PaperProps={{
-        sx: {
-          backgroundColor: 'neutral.900',
-          color: '#FFFFFF',
-          width: 280
-        }
-      }}
-      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
-      variant="temporary"
-    >
-      {content}
-    </Drawer>
-  );
-};
-
-DashboardSidebar.propTypes = {
-  onClose: PropTypes.func,
-  open: PropTypes.bool
-};
+        </Box>*/
