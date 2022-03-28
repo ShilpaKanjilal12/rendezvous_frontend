@@ -27,21 +27,21 @@ const items = [
     icon: (<UsersIcon fontSize="small" />),
     title: 'Customers'
   },
-  {
+ /* {
     href: '/products',
     icon: (<ShoppingBagIcon fontSize="small" />),
     title: 'Products'
-  },
+  },*/
   {
     href: '/account',
     icon: (<UserIcon fontSize="small" />),
     title: 'Account'
   },
-  {
+  /*{
     href: '/settings',
     icon: (<CogIcon fontSize="small" />),
     title: 'Settings'
-  },
+  },*/
   {
     href: '/login',
     icon: (<LockIcon fontSize="small" />),
@@ -52,11 +52,11 @@ const items = [
     icon: (<UserAddIcon fontSize="small" />),
     title: 'Register'
   },
-  {
+  /*{
     href: '/404',
     icon: (<XCircleIcon fontSize="small" />),
     title: 'Error'
-  }
+  }*/
 ];
 
 export const DashboardSidebar = (props) => {
@@ -124,7 +124,7 @@ export const DashboardSidebar = (props) => {
                   color="inherit"
                   variant="subtitle1"
                 >
-                  Acme Inc
+                  Celesta 2022
                 </Typography>
                 <Typography
                   color="neutral.400"
