@@ -10,7 +10,7 @@ import {
 import { Search as SearchIcon } from '../../icons/search';
 import { Upload as UploadIcon } from '../../icons/upload';
 import { Download as DownloadIcon } from '../../icons/download';
-
+import Modal from "./Modal";
 export const CustomerListToolbar = (props) => (
   <Box {...props}>
     <Box
@@ -35,7 +35,8 @@ export const CustomerListToolbar = (props) => (
           color="primary"
           variant="contained"
         >
-          Add Customers
+          
+          <Modal name="Create New Post"/>
         </Button>
       </Box>
     </Box>

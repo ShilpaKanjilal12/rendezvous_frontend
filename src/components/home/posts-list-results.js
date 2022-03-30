@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
+import Post from './Post';
 import {
   Avatar,
   Box,
@@ -17,42 +18,42 @@ import {
 } from '@mui/material';
 import { getInitials } from '../../utils/get-initials';
 
-export const CustomerListResults = ({ customers, ...rest }) => {
-  const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
+export const PostsListResults = ({ posts, ...rest }) => {
+  const [selectedpostIds, setSelectedpostIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
-  const handleSelectAll = (event) => {
-    let newSelectedCustomerIds;
+  /*const handleSelectAll = (event) => {
+    let newSelectedpostIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = customers.map((customer) => customer.id);
+      newSelectedpostIds = posts.map((post) => post.id);
     } else {
-      newSelectedCustomerIds = [];
+      newSelectedpostIds = [];
     }
 
-    setSelectedCustomerIds(newSelectedCustomerIds);
+    setSelectedpostIds(newSelectedpostIds);
   };
 
   const handleSelectOne = (event, id) => {
-    const selectedIndex = selectedCustomerIds.indexOf(id);
-    let newSelectedCustomerIds = [];
+    const selectedIndex = selectedpostIds.indexOf(id);
+    let newSelectedpostIds = [];
 
     if (selectedIndex === -1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds, id);
+      newSelectedpostIds = newSelectedpostIds.concat(selectedpostIds, id);
     } else if (selectedIndex === 0) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(1));
-    } else if (selectedIndex === selectedCustomerIds.length - 1) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(0, -1));
+      newSelectedpostIds = newSelectedpostIds.concat(selectedpostIds.slice(1));
+    } else if (selectedIndex === selectedpostIds.length - 1) {
+      newSelectedpostIds = newSelectedpostIds.concat(selectedpostIds.slice(0, -1));
     } else if (selectedIndex > 0) {
-      newSelectedCustomerIds = newSelectedCustomerIds.concat(
-        selectedCustomerIds.slice(0, selectedIndex),
-        selectedCustomerIds.slice(selectedIndex + 1)
+      newSelectedpostIds = newSelectedpostIds.concat(
+        selectedpostIds.slice(0, selectedIndex),
+        selectedpostIds.slice(selectedIndex + 1)
       );
     }
 
-    setSelectedCustomerIds(newSelectedCustomerIds);
-  };
+    setSelectedpostIds(newSelectedpostIds);
+  };*/
 
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
@@ -65,45 +66,23 @@ export const CustomerListResults = ({ customers, ...rest }) => {
   return (
     <Card {...rest}>
       <PerfectScrollbar>
-        <Box sx={{ minWidth: 1050 }}>
+        <div class="container-fluid">
           <Table>
             
             <TableBody>
-              {customers.slice(0, limit).map((customer) => (
+              {posts.slice(0, limit).map((post) => (
                 <TableRow
                   hover
-                  key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                  key={post.id}
+                  selected={selectedpostIds.indexOf(post.id) !== -1}
                 >
                   
                   <TableCell style={{borderBottomColor:"#d3d3d3"}}>
                   <Table>
+                   
                     <TableRow>
-                    <Box
-                      sx={{
-                        alignItems: 'center',
-                        display: 'flex',
-                        
-                      }}
-                    >
-                      
-                      <Avatar
-                        src={customer.avatarUrl}
-                        sx={{ mr: 2 }}
-                      >
-                        {getInitials(customer.name)}
-                      </Avatar>
-                      <Typography
-                        color="textPrimary"
-                        variant="body1"
-                      >
-                        {customer.name}
-                      </Typography>
-                      
-                    </Box>
-                    </TableRow>
-                    <TableRow>
-                      Hello
+                    
+                      <Post date={post.createdAt} uname={post.creater.name} name={post.name} avatar={post.creater.avatarUrl}/>
                     </TableRow>
                     </Table>
                   </TableCell>
@@ -112,11 +91,11 @@ export const CustomerListResults = ({ customers, ...rest }) => {
               ))}
             </TableBody>
           </Table>
-        </Box>
+          </div>
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={customers.length}
+        count={posts.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}
@@ -127,22 +106,22 @@ export const CustomerListResults = ({ customers, ...rest }) => {
   );
 };
 
-CustomerListResults.propTypes = {
-  customers: PropTypes.array.isRequired
+PostsListResults.propTypes = {
+  posts: PropTypes.array.isRequired
 };
 /*<Checkbox
-                    checked={selectedCustomerIds.length === customers.length}
+                    checked={selectedpostIds.length === posts.length}
                     color="primary"
                     indeterminate={
-                      selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < customers.length
+                      selectedpostIds.length > 0
+                      && selectedpostIds.length < posts.length
                     }
                     onChange={handleSelectAll}
                   />
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.id)}
+                      checked={selectedpostIds.indexOf(post.id) !== -1}
+                      onChange={(event) => handleSelectOne(event, post.id)}
                       value="true"
                     />
                   </TableCell>

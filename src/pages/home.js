@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { Box, Container } from '@mui/material';
-import { CustomerListResults } from '../components/home/posts-list-results';
+import { PostsListResults } from '../components/home/posts-list-results';
 import { CustomerListToolbar } from '../components/home/posts-list-toolbar';
 import { DashboardLayout } from '../components/dashboard-layout';
-import { customers } from '../__mocks__/customers';
+import { posts } from '../__mocks__/posts';
 
-const Customers = () => (
+const Posts = () => (
   <>
     <Head>
       <title>
@@ -22,16 +22,16 @@ const Customers = () => (
       <Container maxWidth={false}>
         <CustomerListToolbar />
         <Box sx={{ mt: 3 }}>
-          <CustomerListResults customers={customers} />
+          <PostsListResults posts={posts} />
         </Box>
       </Container>
     </Box>
   </>
 );
-Customers.getLayout = (page) => (
+Posts.getLayout = (page) => (
   <DashboardLayout>
     {page}
   </DashboardLayout>
 );
 
-export default Customers;
+export default Posts;
