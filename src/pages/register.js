@@ -15,6 +15,8 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+const host = 'http://localhost:8080';
+
 const Register = () => {
   const router = useRouter();
   const formik = useFormik({
@@ -33,16 +35,11 @@ const Register = () => {
         .max(255)
         .required(
           'Email is required'),
-      firstName: Yup
+      username: Yup
         .string()
         .max(255)
         .required(
-          'First name is required'),
-      lastName: Yup
-        .string()
-        .max(255)
-        .required(
-          'Last name is required'),
+          'Username is required'),
       password: Yup
         .string()
         .max(255)
@@ -55,8 +52,27 @@ const Register = () => {
           'This field must be checked'
         )
     }),
-    onSubmit: () => {
-      router.push('/');
+    onSubmit: async () => {
+      // console.log("Button submit")
+      var body = {
+        username: document.getElementById('username').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        confirmPassword: document.getElementById('confirmPassword').value,
+      }
+      let response = await fetch(`${host}/api/auth/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      let json = await response.json()
+      if (response.status !== 200) {
+        alert(json.error);  //invalid signup error
+      } else {
+        localStorage.setItem('user', JSON.stringify(json));
+        alert('Sign Up Successful')
+        router.push('/');
+      }
     }
   });
 
@@ -105,30 +121,20 @@ const Register = () => {
               </Typography>
             </Box>
             <TextField
-              error={Boolean(formik.touched.firstName && formik.errors.firstName)}
+              id='username'
+              error={Boolean(formik.touched.username && formik.errors.username)}
               fullWidth
-              helperText={formik.touched.firstName && formik.errors.firstName}
-              label="First Name"
+              helperText={formik.touched.username && formik.errors.username}
+              label="username"
               margin="normal"
-              name="firstName"
+              name="username"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              value={formik.values.firstName}
+              value={formik.values.username}
               variant="outlined"
             />
             <TextField
-              error={Boolean(formik.touched.lastName && formik.errors.lastName)}
-              fullWidth
-              helperText={formik.touched.lastName && formik.errors.lastName}
-              label="Last Name"
-              margin="normal"
-              name="lastName"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.lastName}
-              variant="outlined"
-            />
-            <TextField
+              id='email'
               error={Boolean(formik.touched.email && formik.errors.email)}
               fullWidth
               helperText={formik.touched.email && formik.errors.email}
@@ -142,6 +148,7 @@ const Register = () => {
               variant="outlined"
             />
             <TextField
+              id='password'
               error={Boolean(formik.touched.password && formik.errors.password)}
               fullWidth
               helperText={formik.touched.password && formik.errors.password}
@@ -152,6 +159,20 @@ const Register = () => {
               onChange={formik.handleChange}
               type="password"
               value={formik.values.password}
+              variant="outlined"
+            />
+            <TextField
+              id='confirmPassword'
+              error={Boolean(formik.touched.password && formik.errors.password)}
+              fullWidth
+              helperText={formik.touched.password && formik.errors.password}
+              label="Confirm Password"
+              margin="normal"
+              name="confirmPassword"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="password"
+              // value={formik.values.password}
               variant="outlined"
             />
             <Box

@@ -8,29 +8,46 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Facebook as FacebookIcon } from '../icons/facebook';
 import { Google as GoogleIcon } from '../icons/google';
 
+const host = 'http://localhost:8080';
+
 const Login = () => {
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
-      email: 'demo@devias.io',
-      password: 'Password123'
+      username: '',
+      password: ''
     },
     validationSchema: Yup.object({
-      email: Yup
+      username: Yup
         .string()
-        .email(
-          'Must be a valid email')
         .max(255)
         .required(
-          'Email is required'),
+          'username is required'),
       password: Yup
         .string()
         .max(255)
         .required(
           'Password is required')
     }),
-    onSubmit: () => {
-      router.push('/');
+    onSubmit: async () => {
+      // console.log("Button submit")
+      var body = {
+        username: document.getElementById('username').value,
+        password: document.getElementById('password').value
+      }
+      let response = await fetch(`${host}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      let json = await response.json()
+      if (response.status !== 200) {
+        alert(json.error);  //invalid login error
+      } else {
+        localStorage.setItem('user', JSON.stringify(json));
+        alert('Login Successful')
+        router.push('/');
+      }
     }
   });
 
@@ -57,62 +74,10 @@ const Login = () => {
               component="a"
               startIcon={<ArrowBackIcon fontSize="small" />}
             >
-              Dashboard
+              Home
             </Button>
           </NextLink>
           <form onSubmit={formik.handleSubmit}>
-            <Box sx={{ my: 3 }}>
-              <Typography
-                color="textPrimary"
-                variant="h4"
-              >
-                Sign in
-              </Typography>
-              <Typography
-                color="textSecondary"
-                gutterBottom
-                variant="body2"
-              >
-                Sign in on the internal platform
-              </Typography>
-            </Box>
-            <Grid
-              container
-              spacing={3}
-            >
-              <Grid
-                item
-                xs={12}
-                md={6}
-              >
-                <Button
-                  color="info"
-                  fullWidth
-                  startIcon={<FacebookIcon />}
-                  onClick={formik.handleSubmit}
-                  size="large"
-                  variant="contained"
-                >
-                  Login with Facebook
-                </Button>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                md={6}
-              >
-                <Button
-                  fullWidth
-                  color="error"
-                  startIcon={<GoogleIcon />}
-                  onClick={formik.handleSubmit}
-                  size="large"
-                  variant="contained"
-                >
-                  Login with Google
-                </Button>
-              </Grid>
-            </Grid>
             <Box
               sx={{
                 pb: 1,
@@ -124,23 +89,25 @@ const Login = () => {
                 color="textSecondary"
                 variant="body1"
               >
-                or login with email address
+                Login with username
               </Typography>
             </Box>
             <TextField
-              error={Boolean(formik.touched.email && formik.errors.email)}
+              id='username'
+              error={Boolean(formik.touched.text && formik.errors.text)}
               fullWidth
-              helperText={formik.touched.email && formik.errors.email}
-              label="Email Address"
+              helperText={formik.touched.text && formik.errors.text}
+              label="username"
               margin="normal"
-              name="email"
+              name="username"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              type="email"
-              value={formik.values.email}
+              type="text"
+              value={formik.values.username}
               variant="outlined"
             />
             <TextField
+              id='password'
               error={Boolean(formik.touched.password && formik.errors.password)}
               fullWidth
               helperText={formik.touched.password && formik.errors.password}
