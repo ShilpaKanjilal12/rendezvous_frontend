@@ -27,7 +27,7 @@ export default function RecipeReviewCard(props) {
 
   return (<>
   <div class="container-fluid">
-    <Card >
+    <Card style={{width:"75vw"}}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
