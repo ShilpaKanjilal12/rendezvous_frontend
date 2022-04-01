@@ -42,6 +42,23 @@ async function createPost() {
       console.log(json)
     }
     fileReader.readAsDataURL(fileToLoad);
+  } else {
+    let body = {
+      title: document.getElementById('post-name').value,
+      body: document.getElementById('standard-basic').value
+    }
+    console.log(body)
+    const response = await fetch(`${host}/api/post/create`, {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+        authtoken:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6IkRvZUpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjQ4NjU0NDQ2fQ.9QdivBL63M7UiqDRyxrJZhZ4gvpRFPY2TORU3MhZaYI",
+      },
+      body: JSON.stringify(body),
+    });
+    let json = await response.json();
+    console.log(json)
   }
 
 
