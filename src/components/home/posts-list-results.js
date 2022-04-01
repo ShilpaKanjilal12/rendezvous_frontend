@@ -1,9 +1,10 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import Post from './Post';
 import { Button } from '@mui/material';
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const host = 'http://localhost:8080';
 import {
@@ -27,6 +28,7 @@ export const PostsListResults = () => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
   const [posts, setPost] = useState([]);
+  const [loading, setLoading] = useState(true);
   const handleLimitChange = (event) => {
     setLimit(event.target.value);
   };
@@ -34,63 +36,45 @@ export const PostsListResults = () => {
   const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
-  
+
   useEffect(() => {
     viewPost();
   }, []);
-async function viewPost() 
-{
-  const response = await fetch(`${host}/api/post/view`, {
-    method: 'GET',
-    headers: {
-      "content-type": "application/json",
-      authtoken:
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6IkRvZUpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjQ4NjU0NDQ2fQ.9QdivBL63M7UiqDRyxrJZhZ4gvpRFPY2TORU3MhZaYI",
-    },
-    
-  });
-  let json = await response.json();
-  
-  console.log(json.post);
-  setPost(json.post.reverse());
-  
-}
+  async function viewPost() {
+    const response = await fetch(`${host}/api/post/view`, {
+      method: 'GET'
+
+    });
+    let json = await response.json();
+
+    setPost(json.post.reverse());
+    setLoading(false)
+  }
   return (
     <Card onload="viewPost()">
       <PerfectScrollbar>
-      {/* <Button
-        color="primary"
-        variant="contained"
-        onClick={(e) => {
-          e.preventDefault();
-          viewPost();
-        }}
-      >
-      View
-      </Button> */}
-      {console.log(posts)}
-        <div class="container-fluid">
+        {loading ? <img src='https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif' style={{textAlign: 'center'}}/> : <div class="container-fluid">
           <Table>
-            
+
             <TableBody>
               {posts.slice(0, posts.length).map((post) => (
                 <TableRow>
                   {console.log(post)}
-                  <TableCell style={{borderBottomColor:"#d3d3d3"}}>
-                  <Table>
-                   
-                    <TableRow>
-                    
-                      <Post date="15th March" uname={post.username} name={post.title} text={post.body} img={post.image}/>
-                    </TableRow>
+                  <TableCell style={{ borderBottomColor: "#d3d3d3" }}>
+                    <Table>
+
+                      <TableRow>
+
+                        <Post date="15th March" uname={post.username} name={post.title} text={post.body} img={post.image} id={post._id} refreshPage={viewPost} />
+                      </TableRow>
                     </Table>
                   </TableCell>
-                  
+
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-          </div>
+        </div>}
       </PerfectScrollbar>
       <TablePagination
         component="div"

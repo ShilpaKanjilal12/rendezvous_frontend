@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
+import { useRouter } from 'next/router';
 
 
 const host = 'http://localhost:8080';
@@ -34,7 +35,7 @@ async function createPost() {
         headers: {
           "content-type": "application/json",
           authtoken:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6IkRvZUpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjQ4NjU0NDQ2fQ.9QdivBL63M7UiqDRyxrJZhZ4gvpRFPY2TORU3MhZaYI",
+            JSON.parse(localStorage.getItem('user')).authtoken,
         },
         body: JSON.stringify(body),
       });
@@ -53,7 +54,7 @@ async function createPost() {
       headers: {
         "content-type": "application/json",
         authtoken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG5Eb2UiLCJlbWFpbCI6IkRvZUpvaG5AZ21haWwuY29tIiwiaWF0IjoxNjQ4NjU0NDQ2fQ.9QdivBL63M7UiqDRyxrJZhZ4gvpRFPY2TORU3MhZaYI",
+          localStorage.getItem('user').authtoken,
       },
       body: JSON.stringify(body),
     });
@@ -65,6 +66,8 @@ async function createPost() {
 }
 
 export default function BasicTextFields() {
+  
+  const router = useRouter();
   return (
     <Box
       component="form"
@@ -94,6 +97,7 @@ export default function BasicTextFields() {
         onClick={(e) => {
           e.preventDefault();
           createPost();
+          router.push('/');
         }}
       >
 

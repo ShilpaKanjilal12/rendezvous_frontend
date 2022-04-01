@@ -16,62 +16,85 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { CardActionArea } from '@mui/material';
+import { Button } from '@mui/material';
+import { useRouter } from 'next/router';
 
+const host = 'http://localhost:8080';
+
+async function deletePost(id){
+  let response = await fetch(`${host}/api/post/delete/${id}`,{
+    method:'DELETE',
+    headers:{
+      authtoken: JSON.parse(localStorage.getItem('user')).authtoken
+    }
+  });
+
+}
 
 export default function RecipeReviewCard(props) {
+  
+  const router = useRouter();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const src=props.img;
- return (<>
-  <div class="container-fluid">
-    <Card style={{width:"75vw"}}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
+  const src = props.img;
+  var src2=src;
+  return (<>
+    <div class="container-fluid">
+      <Card style={{ width: "75vw" }}>
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              R
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title={props.name}
+          subheader={"Posted by " + props.uname + " | " + props.date}
+        />
+        {src && <CardActionArea href="">
+          {
+            String(src2).substring(5, 10).localeCompare("image") === 0 ? <CardMedia
+              component="img"
+              // height="194"
+              image={src}
+              alt="Paella dish"
+            /> : <CardMedia
+            controls="true"
+              component="video"
+              // height="194"
+              image={src}
+              autoPlay
+              alt="Paella dish"
+            />
+          }
+
+        </CardActionArea>}
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+
+            {props.text}
+          </Typography>
+        </CardContent>
+
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon />
           </IconButton>
-        }
-        title={props.name}
-        subheader={"Posted by "+props.uname+" | "+props.date}
-      />
-      <CardActionArea href="">
-      <CardMedia
-        component="img"
-        height="194"
-        image={src}
-        alt="Paella dish"
-      />
-      <CardMedia
-        component="video"
-        height="194"
-        image={src}
-        autoPlay
-        alt="Paella dish"
-      />
-      </CardActionArea>
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-       
-          {props.text}
-        </Typography>
-      </CardContent>
-      
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
+          {props.uname.localeCompare(JSON.parse(localStorage.getItem('user')).user.username)===0 && <Button onClick={()=>{
+            deletePost(props.id)
+            
+          router.push('/');}}>Delete Post</Button>}
+        </CardActions>
       </Card>
-      </div>
-    
+    </div>
+
   </>
   );
 }
