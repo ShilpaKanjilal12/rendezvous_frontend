@@ -25,7 +25,7 @@ export default function RecipeReviewCard(props) {
     setExpanded(!expanded);
   };
   const src=props.img;
-  return (<>
+ return (<>
   <div class="container-fluid">
     <Card style={{width:"75vw"}}>
       <CardHeader
@@ -47,6 +47,13 @@ export default function RecipeReviewCard(props) {
         component="img"
         height="194"
         image={src}
+        alt="Paella dish"
+      />
+      <CardMedia
+        component="video"
+        height="194"
+        image={src}
+        autoPlay
         alt="Paella dish"
       />
       </CardActionArea>
