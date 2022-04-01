@@ -15,7 +15,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import { CardActionArea } from '@mui/material';
 
 
 export default function RecipeReviewCard(props) {
@@ -24,7 +24,7 @@ export default function RecipeReviewCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  const src=props.img;
   return (<>
   <div class="container-fluid">
     <Card style={{width:"75vw"}}>
@@ -42,19 +42,18 @@ export default function RecipeReviewCard(props) {
         title={props.name}
         subheader={"Posted by "+props.uname+" | "+props.date}
       />
+      <CardActionArea href="">
       <CardMedia
         component="img"
         height="194"
-        image="/static/images/sample-img.png"
+        image={src}
         alt="Paella dish"
       />
+      </CardActionArea>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
        
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
-         
+          {props.text}
         </Typography>
       </CardContent>
       
