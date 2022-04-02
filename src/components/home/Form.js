@@ -69,7 +69,7 @@ export default function BasicTextFields() {
   const router = useRouter();
   return (
     <>
-    {creating && <img src='https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif' width='100px' height='100px'/>} <Box
+    {creating && <img src='https://c.tenor.com/gJLmlIn6EvEAAAAM/loading-gif.gif' width='100px' height='100px'/>} <Box
       component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },

@@ -53,7 +53,7 @@ export const PostsListResults = () => {
   return (
     <Card>
       {/* <PerfectScrollbar> */}
-        {loading ? <img src='https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif' style={{textAlign: 'center'}}/> : <div className="container-fluid">
+        {loading ? <img src='https://c.tenor.com/gJLmlIn6EvEAAAAM/loading-gif.gif' style={{textAlign: 'center', marginLeft:"25vw"}}/> : <div className="container-fluid">
           <Table>
 
             <TableBody>
