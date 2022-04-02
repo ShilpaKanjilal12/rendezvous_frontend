@@ -102,19 +102,7 @@ export const DashboardSidebar = (props) => {
       >
         <div>
           <Box sx={{ p: 3 }}>
-            <NextLink
-              href="/"
-              passHref
-            >
-              <a>
-                <Logo
-                  sx={{
-                    height: 42,
-                    width: 42
-                  }}
-                />
-              </a>
-            </NextLink>
+            
           </Box>
           <Box sx={{ px: 2 }}>
             <Box
@@ -128,15 +116,17 @@ export const DashboardSidebar = (props) => {
                 py: '11px',
                 borderRadius: 1
               }}
+              
             >
-              <div>
+               
                 <Typography
-                  color="inherit"
+                  color="white"
                   variant="subtitle1"
                 >
                   Rendezvous <br/>(Celesta 2022)
                 </Typography>
-              </div>
+                
+              
             </Box>
           </Box>
         </div>
