@@ -8,7 +8,6 @@ import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/router';
 import {useState} from 'react';
 
-
 const host = 'http://localhost:8080';
 
 const Input = styled('input')({
@@ -16,7 +15,7 @@ const Input = styled('input')({
 });
 
 async function createPost(router) {
-  var filesSelected = document.getElementById("inputFileToLoad").files;
+  var filesSelected = document.getElementById("contained-button-file").files;
 
   if (filesSelected.length > 0) {
     var fileToLoad = filesSelected[0];
@@ -83,13 +82,17 @@ export default function BasicTextFields() {
 
       <Stack direction="row" alignItems="center" spacing={2}>
 
-        <label htmlFor="icon-button-file">
-          <Input accept="image/*" id="icon-button-file" type="file" />
+        <label htmlFor="icon-button-file" class="custom-file-upload">
           <IconButton color="primary" aria-label="upload picture" component="span">
-            {/* <PhotoCamera /> */}
-            <input id="inputFileToLoad" type="file" />
+            <label htmlFor="contained-button-file">
+            <Input id="contained-button-file" type="file" />
+            <Button variant="contained" component="span">
+              Upload
+            </Button>
+          </label>
+          &ensp;
             <h6 style={{fontWeight:500, fontSize:"10px"}}>Maximum File Size: 49MB</h6>
-            &ensp;
+            
           </IconButton>
         </label>
       </Stack>
