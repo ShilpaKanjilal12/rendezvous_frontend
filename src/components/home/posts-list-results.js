@@ -60,7 +60,7 @@ export const PostsListResults = () => {
           <Table>
 
             <TableBody>
-              {posts.slice(0, posts.length).map((post) => (
+              {posts.map((post) => (
                 <TableRow key={post._id}>
                   <TableCell style={{ borderBottomColor: "#d3d3d3" }}>
                     <Table>
@@ -78,9 +78,9 @@ export const PostsListResults = () => {
           </Table>
         </div>}
       {/* </PerfectScrollbar> */}
-      <ScrollButton />
+      {/* <ScrollButton /> */}
     
-      <TablePagination
+      {/* <TablePagination
         component="div"
         count={posts.length}
         onPageChange={handlePageChange}
@@ -88,7 +88,7 @@ export const PostsListResults = () => {
         page={page}
         rowsPerPage={limit}
         rowsPerPageOptions={[5, 10, 25]}
-      />
+      /> */}
     </Card>
   );
 };
