@@ -65,7 +65,7 @@ export default function RecipeReviewCard(props) {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
+              {props.uname.charAt(0)}
             </Avatar>
           }
           action={
