@@ -18,8 +18,11 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { CardActionArea } from '@mui/material';
 import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
+import {useEffect, useState} from 'react';
 
 const host = 'http://localhost:8080';
+
+var likes;
 
 async function deletePost(id){
   let response = await fetch(`${host}/api/post/delete/${id}`,{
@@ -31,10 +34,35 @@ async function deletePost(id){
 
 }
 
+async function likePost(id, setLikes){
+  let response = await fetch(`${host}/api/post/like/${id}`,{
+    method: 'GET',
+    headers:{
+      authtoken: JSON.parse(localStorage.getItem('user')).authtoken
+    }
+  })
+  let json = await response.json();
+  if(response.status === 200) {
+    console.log("success");
+    console.log(json)
+    setLikes(json.like.length)
+  }else{
+    console.log("error")
+  }
+}
+
 export default function RecipeReviewCard(props) {
   
   const router = useRouter();
   const [expanded, setExpanded] = React.useState(false);
+  const [likes, setLikes] = useState(props.likeCount);
+
+  // useEffect(() => {
+  //   document.getElementById('likebtn').addEventListener('click',()=>{
+  //     console.log("Like clicked!")
+  //   })
+  // }, [])
+  
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -84,9 +112,10 @@ export default function RecipeReviewCard(props) {
         </CardContent>
 
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
+          {/* <IconButton aria-label="add to favorites">
+            <FavoriteIcon id="likebtn"/>
+          </IconButton> */}
+          {localStorage.getItem('user') && <Button onClick={()=>{console.log("Like!"); likePost(props.id, setLikes)}}>💗 {likes}</Button>}
           {props.uname.localeCompare(JSON.parse(localStorage.getItem('user')).user.username)===0 && <Button onClick={()=>{
             deletePost(props.id)
             

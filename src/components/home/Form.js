@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/router';
+import {useState} from 'react';
 
 
 const host = 'http://localhost:8080';
@@ -14,7 +15,7 @@ const Input = styled('input')({
   display: 'none',
 });
 
-async function createPost() {
+async function createPost(router) {
   var filesSelected = document.getElementById("inputFileToLoad").files;
 
   if (filesSelected.length > 0) {
@@ -41,6 +42,8 @@ async function createPost() {
       });
       let json = await response.json();
       console.log(json)
+      
+    router.push('/');
     }
     fileReader.readAsDataURL(fileToLoad);
   } else {
@@ -60,23 +63,24 @@ async function createPost() {
     });
     let json = await response.json();
     console.log(json)
+    router.push('/');
   }
-
 
 }
 
 export default function BasicTextFields() {
-  
+  const [creating, setCreating] = useState(false);
   const router = useRouter();
   return (
-    <Box
+    <>
+    {creating && <img src='https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif' width='100px' height='100px'/>} <Box
       component="form"
       sx={{
         '& > :not(style)': { m: 1, width: '25ch' },
       }}
       noValidate
       autoComplete="off"
-    >
+    > 
       <TextField id="post-name" label="Name of the Post" variant="outlined" />
       <TextField id="standard-basic" label="Description" variant="standard" style={{ width: "50vh" }} />
 
@@ -94,16 +98,18 @@ export default function BasicTextFields() {
       <Button
         color="primary"
         variant="contained"
-        onClick={(e) => {
+        onClick={async (e) => {
           e.preventDefault();
-          createPost();
-          router.push('/');
+          setCreating(true);
+          createPost(router);
+          // router.push('/');
         }}
       >
 
         Create
       </Button>
     </Box>
+    </>
 
   );
 }

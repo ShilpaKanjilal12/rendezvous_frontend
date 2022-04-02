@@ -65,7 +65,7 @@ export const PostsListResults = () => {
 
                       <TableRow>
 
-                        <Post date="15th March" uname={post.username} name={post.title} text={post.body} img={post.image} id={post._id} refreshPage={viewPost} />
+                        <Post date="15th March" uname={post.username} name={post.title} text={post.body} img={post.image} id={post._id} refreshPage={viewPost} likeCount = {post.like.length}/>
                       </TableRow>
                     </Table>
                   </TableCell>
