@@ -4,6 +4,7 @@ import { PostsListResults } from '../components/home/posts-list-results';
 import { CustomerListToolbar } from '../components/home/posts-list-toolbar';
 import { DashboardLayout } from '../components/dashboard-layout';
 import { posts } from '../__mocks__/posts';
+import Footer from 'src/components/home/Footer';
 
 const Posts = () => (
   <>
@@ -26,6 +27,7 @@ const Posts = () => (
         </Box>
       </Container>
     </Box>
+    <Footer/>
   </>
 );
 Posts.getLayout = (page) => (
