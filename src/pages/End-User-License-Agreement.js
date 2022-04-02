@@ -19,8 +19,8 @@ export const Eula = () => {
 
       <p><h1 style={heading}>End-User License Agreement ("Agreement")</h1></p>
       <br/>
-<p>Our EULA was last updated on [___DATE___]</p>
-<p>Please read this End-User License Agreement carefully before clicking the "I Agree" button, downloading or using [___APP_NAME____].</p>
+<p>Our EULA was last updated on 03-04-2022</p>
+<p>Please read this End-User License Agreement carefully before clicking the "I Agree" button, downloading or using Rendezvous.</p>
 <p><h1 style={heading}>Interpretation and Definitions</h1></p>
 <p><h3 style={subheading}>Interpretation</h3></p>
 <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
@@ -131,8 +131,7 @@ The Company may, in its sole discretion, at any time and for any or no reason, s
 <p><h1 style={heading}>Contact Us</h1></p>
 <p>If you have any questions about this Agreement, You can contact Us:</p>
 <ul>
-<li>By visiting this page on our website: [___WEBSITE_CONTACT_PAGE_URL___]</li>
-<li>By sending us an email: [___WEBSITE_CONTACT_EMAIL___]</li>
+<li>By sending us an email: abhaduriperso@gmail.com</li>
 </ul>
 <p></p>
     </Box>

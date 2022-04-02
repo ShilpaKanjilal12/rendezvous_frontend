@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { AppBar, Avatar, Badge, Box, IconButton, Toolbar, Tooltip } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -6,6 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Bell as BellIcon } from '../icons/bell';
 import { UserCircle as UserCircleIcon } from '../icons/user-circle';
 import { Users as UsersIcon } from '../icons/users';
+import { Typography } from '@mui/material';
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -15,6 +17,12 @@ const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
 export const DashboardNavbar = (props) => {
   const { onSidebarOpen, ...other } = props;
 
+  const [loggedin, setLoggedin] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.getItem('user')) {setLoggedin(true);}
+  }, [])
+  
   return (
     <>
       <DashboardNavbarRoot
@@ -46,6 +54,7 @@ export const DashboardNavbar = (props) => {
           >
             <MenuIcon fontSize="small" />
           </IconButton>
+          <Typography> {loggedin && JSON.parse(localStorage.getItem('user')).username}</Typography> 
           <a  href="./account">
           <Avatar
             sx={{
@@ -59,7 +68,6 @@ export const DashboardNavbar = (props) => {
           >
             
             <UserCircleIcon fontSize="small" />
-            
           </Avatar>
           </a>
         </Toolbar>
