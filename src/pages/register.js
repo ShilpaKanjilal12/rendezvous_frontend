@@ -3,6 +3,9 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import * as React from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import { Alert } from '@mui/material';
 import {
   Box,
   Button,
@@ -19,6 +22,8 @@ const host = 'http://localhost:8080';
 
 const Register = () => {
   const router = useRouter();
+  const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -66,10 +71,12 @@ const Register = () => {
       })
       let json = await response.json()
       if (response.status !== 200) {
-        alert(json.error);  //invalid signup error
+        //alert(json.error);  
+        setOpen2(true);//invalid signup error
       } else {
         localStorage.setItem('user', JSON.stringify(json));
-        alert('Sign Up Successful')
+        //alert('Sign Up Successful')
+        setOpen(true);
         router.push('/');
       }
     }
@@ -100,7 +107,7 @@ const Register = () => {
               component="a"
               startIcon={<ArrowBackIcon fontSize="small" />}
             >
-              Dashboard
+              Go To Home Page
             </Button>
           </NextLink>
           <form onSubmit={formik.handleSubmit}>
@@ -244,6 +251,23 @@ const Register = () => {
           </form>
         </Container>
       </Box>
+      <div>
+
+        <Snackbar
+          open={open}
+          autoHideDuration={600}>
+          <Alert severity="success" sx={{ width: '100%' }}>
+            Registration Successful
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={open2}
+          autoHideDuration={6000}>
+          <Alert severity="error" sx={{ width: '100%' }}>
+            Registration Unsuccessful
+          </Alert>
+        </Snackbar>
+      </div>
     </>
   );
 };
