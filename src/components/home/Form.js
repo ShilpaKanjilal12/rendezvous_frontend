@@ -54,11 +54,12 @@ async function createPost(router) {
       headers: {
         "content-type": "application/json",
         authtoken:
-          localStorage.getItem('user').authtoken,
+        JSON.parse(localStorage.getItem('user')).authtoken,
       },
       body: JSON.stringify(body),
     });
     let json = await response.json();
+    // console.log(json)
     router.push('/');
   }
 
