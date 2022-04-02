@@ -11,12 +11,20 @@ import { Search as SearchIcon } from '../../icons/search';
 import { Upload as UploadIcon } from '../../icons/upload';
 import { Download as DownloadIcon } from '../../icons/download';
 import Modal from "./Modal";
+import { useEffect, useState } from 'react';
 
 
 
 
-export const CustomerListToolbar = (props) => (
+export const CustomerListToolbar = (props) => {
+  const [loggedin, setLoggedin] = useState(false);
 
+  useEffect(() => {
+    if(localStorage.getItem('user')) setLoggedin(true);
+  }, [])
+  
+  return(
+  
   
     <Box {...props}>
       <Box
@@ -35,7 +43,7 @@ export const CustomerListToolbar = (props) => (
           Posts
         </Typography>
 
-        <Box sx={{ m: 1 }}>
+        {loggedin && <Box sx={{ m: 1 }}>
 
           <Button
             color="primary"
@@ -44,7 +52,7 @@ export const CustomerListToolbar = (props) => (
 
             <Modal name="Create New Post" />
           </Button>
-        </Box>
+        </Box>}
       </Box>
       <Box sx={{ mt: 3 }}>
         <Card>
@@ -72,7 +80,7 @@ export const CustomerListToolbar = (props) => (
         </Card>
       </Box>
     </Box>
-);
+)};
 
 /*<Button
           startIcon={(<UploadIcon fontSize="small" />)}

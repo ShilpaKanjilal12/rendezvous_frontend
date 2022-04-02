@@ -86,6 +86,11 @@ export const DashboardSidebar = (props) => {
     [router.asPath]
   );
 
+  const logout=()=>{
+    localStorage.removeItem('user')
+    router.push('/');
+  }
+
   const content = (
     <>
       <Box
@@ -158,7 +163,7 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
-        <Button variant="contained" sx={{margin: '10px'}}>Log Out</Button>
+        <Button variant="contained" sx={{margin: '10px'}} onClick={logout}>Log Out</Button>
         
       </Box>
     </>
