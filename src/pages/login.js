@@ -3,15 +3,22 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import * as React from 'react';
+import Snackbar from '@mui/material/Snackbar';
+
 import { Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Facebook as FacebookIcon } from '../icons/facebook';
 import { Google as GoogleIcon } from '../icons/google';
+import { Alert } from '@mui/material';
 
 const host = 'http://localhost:8080';
 
 const Login = () => {
+  const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
   const router = useRouter();
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -41,10 +48,13 @@ const Login = () => {
       })
       let json = await response.json()
       if (response.status !== 200) {
-        alert(json.error);  //invalid login error
+        //alert(json.error);  //invalid login error
+        setOpen2(true);
       } else {
         localStorage.setItem('user', JSON.stringify(json));
-        alert('Login Successful')
+        //alert('Login Successful')
+        setOpen(true);
+
         router.push('/');
       }
     }
@@ -155,6 +165,23 @@ const Login = () => {
           </form>
         </Container>
       </Box>
+      <div>
+
+        <Snackbar
+          open={open}
+          autoHideDuration={600}>
+          <Alert severity="success" sx={{ width: '100%' }}>
+            Login Successful
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={open2}
+          autoHideDuration={6000}>
+          <Alert severity="error" sx={{ width: '100%' }}>
+            Incorrect Credentials
+          </Alert>
+        </Snackbar>
+      </div>
     </>
   );
 };
