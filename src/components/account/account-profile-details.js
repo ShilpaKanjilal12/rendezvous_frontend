@@ -36,14 +36,17 @@ export const AccountProfileDetails = (props) => {
   });
 
   useEffect(() => {
-    setValues({
-      username: JSON.parse(localStorage.getItem('user')).user.username,
-      // lastName: 'Smith',
-      email: JSON.parse(localStorage.getItem('user')).user.email,
-      // phone: '',
-      // state: 'Alabama',
-      // country: 'USA'
-    })
+    if(localStorage.getItem('user')){
+
+      setValues({
+        username: JSON.parse(localStorage.getItem('user')).user.username,
+        // lastName: 'Smith',
+        email: JSON.parse(localStorage.getItem('user')).user.email,
+        // phone: '',
+        // state: 'Alabama',
+        // country: 'USA'
+      })
+    }
   }, [])
   
 

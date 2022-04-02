@@ -9,6 +9,7 @@ import {
   Typography
 } from '@mui/material';
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
 
 // const user = {
 //   avatar: '/static/images/avatars/avatar_6.png',
@@ -21,19 +22,27 @@ import { useEffect, useState } from 'react'
 // };
 
 export const AccountProfile = (props) => {
+  const router = useRouter();
   const [profile, setProfile] = useState({
-    avatar: '/static/images/avatars/avatar_6.png',
+    avatar: 'https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png',
     username: 'sample username',
     email: 'sample email'
   })
 
   useEffect(() => {
-    setProfile({avatar: '/static/images/avatars/avatar_6.png',
-    // city: 'Los Angeles',
-    // country: 'USA',
-    // jobTitle: 'Senior Developer',
-    username: JSON.parse(localStorage.getItem('user')).user.username,
-    email: JSON.parse(localStorage.getItem('user')).user.email})
+    if (localStorage.getItem('user')) {
+
+      setProfile({
+        avatar: 'https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png',
+        // city: 'Los Angeles',
+        // country: 'USA',
+        // jobTitle: 'Senior Developer',
+        username: JSON.parse(localStorage.getItem('user')).user.username,
+        email: JSON.parse(localStorage.getItem('user')).user.email
+      })
+    } else {
+      router.push('/login')
+    }
   }, [])
 
   return (
@@ -67,7 +76,7 @@ export const AccountProfile = (props) => {
           >
             {`${profile.email}`}
           </Typography>
-          
+
         </Box>
       </CardContent>
       <Divider />

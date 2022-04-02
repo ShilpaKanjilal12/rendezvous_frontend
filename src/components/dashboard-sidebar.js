@@ -131,14 +131,6 @@ export const DashboardSidebar = (props) => {
                 >
                   Celesta 2022
                 </Typography>
-                <Typography
-                  color="neutral.400"
-                  variant="body2"
-                >
-                  Your tier
-                  {' '}
-                  : Premium
-                </Typography>
               </div>
               <SelectorIcon
                 sx={{
@@ -166,6 +158,7 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
+        <Button variant="contained" sx={{margin: '10px'}}>Log Out</Button>
         
       </Box>
     </>

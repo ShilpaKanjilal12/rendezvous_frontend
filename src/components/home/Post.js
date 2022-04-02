@@ -74,7 +74,7 @@ export default function RecipeReviewCard(props) {
             </IconButton>
           }
           title={props.name}
-          subheader={"Posted by " + props.uname + " | " + props.date}
+          subheader={"Posted by " + props.uname }
         />
         {src && <CardActionArea href="">
           {
@@ -106,7 +106,7 @@ export default function RecipeReviewCard(props) {
             <FavoriteIcon id="likebtn"/>
           </IconButton> */}
           {localStorage.getItem('user') && <Button onClick={()=>{likePost(props.id, setLikes)}}>💗 {likes}</Button>}
-          {props.uname.localeCompare(JSON.parse(localStorage.getItem('user')).user.username)===0 && <Button onClick={()=>{
+          {localStorage.getItem('user') && props.uname.localeCompare(JSON.parse(localStorage.getItem('user')).user.username)===0 && <Button onClick={()=>{
             deletePost(props.id)
             
           router.push('/');}}>Delete Post</Button>}
