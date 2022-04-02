@@ -88,6 +88,7 @@ export default function BasicTextFields() {
           <IconButton color="primary" aria-label="upload picture" component="span">
             {/* <PhotoCamera /> */}
             <input id="inputFileToLoad" type="file" />
+            <h6 style={{fontWeight:500, fontSize:"10px"}}>Maximum File Size: 49MB</h6>
             &ensp;
           </IconButton>
         </label>

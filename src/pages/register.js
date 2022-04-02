@@ -200,7 +200,7 @@ const Register = () => {
                 I have read the
                 {' '}
                 <NextLink
-                  href="#"
+                  href="/End-User-License-Agreement"
                   passHref
                 >
                   <Link
