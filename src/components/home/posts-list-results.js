@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import Post from './Post';
 import { Button } from '@mui/material';
+import { Fragment } from 'react';
+import ScrollButton from './ScrollButton';
+ 
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const host = 'http://localhost:8080';
@@ -75,6 +78,8 @@ export const PostsListResults = () => {
           </Table>
         </div>}
       {/* </PerfectScrollbar> */}
+      <ScrollButton />
+    
       <TablePagination
         component="div"
         count={posts.length}
