@@ -74,7 +74,7 @@ export default function RecipeReviewCard(props) {
             </IconButton>
           }
           title={props.name}
-          subheader={"Posted by " + props.uname }
+          subheader={"Posted by " + props.uname + " | " + props.date }
         />
         {src && <CardActionArea href="">
           {
@@ -88,7 +88,7 @@ export default function RecipeReviewCard(props) {
               component="video"
               // height="194"
               image={src}
-              autoPlay
+              
               alt="Paella dish"
             />
           }
