@@ -43,11 +43,7 @@ async function likePost(id, setLikes){
   })
   let json = await response.json();
   if(response.status === 200) {
-    console.log("success");
-    console.log(json)
     setLikes(json.like.length)
-  }else{
-    console.log("error")
   }
 }
 
@@ -56,12 +52,6 @@ export default function RecipeReviewCard(props) {
   const router = useRouter();
   const [expanded, setExpanded] = React.useState(false);
   const [likes, setLikes] = useState(props.likeCount);
-
-  // useEffect(() => {
-  //   document.getElementById('likebtn').addEventListener('click',()=>{
-  //     console.log("Like clicked!")
-  //   })
-  // }, [])
   
 
   const handleExpandClick = () => {
@@ -70,7 +60,7 @@ export default function RecipeReviewCard(props) {
   const src = props.img;
   var src2=src;
   return (<>
-    <div class="container-fluid">
+    <div className="container-fluid">
       <Card style={{ width: "75vw" }}>
         <CardHeader
           avatar={
@@ -94,7 +84,7 @@ export default function RecipeReviewCard(props) {
               image={src}
               alt="Paella dish"
             /> : <CardMedia
-            controls="true"
+            controls={true}
               component="video"
               // height="194"
               image={src}
@@ -115,7 +105,7 @@ export default function RecipeReviewCard(props) {
           {/* <IconButton aria-label="add to favorites">
             <FavoriteIcon id="likebtn"/>
           </IconButton> */}
-          {localStorage.getItem('user') && <Button onClick={()=>{console.log("Like!"); likePost(props.id, setLikes)}}>💗 {likes}</Button>}
+          {localStorage.getItem('user') && <Button onClick={()=>{likePost(props.id, setLikes)}}>💗 {likes}</Button>}
           {props.uname.localeCompare(JSON.parse(localStorage.getItem('user')).user.username)===0 && <Button onClick={()=>{
             deletePost(props.id)
             

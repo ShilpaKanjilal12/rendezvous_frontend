@@ -51,15 +51,14 @@ export const PostsListResults = () => {
     setLoading(false)
   }
   return (
-    <Card onload="viewPost()">
-      <PerfectScrollbar>
-        {loading ? <img src='https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif' style={{textAlign: 'center'}}/> : <div class="container-fluid">
+    <Card>
+      {/* <PerfectScrollbar> */}
+        {loading ? <img src='https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif' style={{textAlign: 'center'}}/> : <div className="container-fluid">
           <Table>
 
             <TableBody>
               {posts.slice(0, posts.length).map((post) => (
-                <TableRow>
-                  {console.log(post)}
+                <TableRow key={post._id}>
                   <TableCell style={{ borderBottomColor: "#d3d3d3" }}>
                     <Table>
 
@@ -75,7 +74,7 @@ export const PostsListResults = () => {
             </TableBody>
           </Table>
         </div>}
-      </PerfectScrollbar>
+      {/* </PerfectScrollbar> */}
       <TablePagination
         component="div"
         count={posts.length}

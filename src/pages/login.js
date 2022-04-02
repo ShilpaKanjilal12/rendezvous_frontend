@@ -30,7 +30,6 @@ const Login = () => {
           'Password is required')
     }),
     onSubmit: async () => {
-      // console.log("Button submit")
       var body = {
         username: document.getElementById('username').value,
         password: document.getElementById('password').value

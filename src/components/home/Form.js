@@ -30,7 +30,6 @@ async function createPost(router) {
         body: document.getElementById('standard-basic').value,
         image: base64
       }
-      console.log(body)
       const response = await fetch(`${host}/api/post/create`, {
         method: 'POST',
         headers: {
@@ -41,7 +40,6 @@ async function createPost(router) {
         body: JSON.stringify(body),
       });
       let json = await response.json();
-      console.log(json)
       
     router.push('/');
     }
@@ -51,7 +49,6 @@ async function createPost(router) {
       title: document.getElementById('post-name').value,
       body: document.getElementById('standard-basic').value
     }
-    console.log(body)
     const response = await fetch(`${host}/api/post/create`, {
       method: 'POST',
       headers: {
@@ -62,7 +59,6 @@ async function createPost(router) {
       body: JSON.stringify(body),
     });
     let json = await response.json();
-    console.log(json)
     router.push('/');
   }
 

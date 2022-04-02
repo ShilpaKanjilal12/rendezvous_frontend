@@ -8,64 +8,69 @@ import {
   Divider,
   Typography
 } from '@mui/material';
+import { useEffect, useState } from 'react'
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
-  timezone: 'GTM-7'
-};
+// const user = {
+//   avatar: '/static/images/avatars/avatar_6.png',
+//   // city: 'Los Angeles',
+//   // country: 'USA',
+//   // jobTitle: 'Senior Developer',
+//   username: JSON.parse(localStorage.getItem('user')).user.username,
+//   email: JSON.parse(localStorage.getItem('user')).user.email
+//   // timezone: 'GTM-7'
+// };
 
-export const AccountProfile = (props) => (
-  <Card {...props}>
-    <CardContent>
-      <Box
-        sx={{
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column'
-        }}
-      >
-        <Avatar
-          src={user.avatar}
+export const AccountProfile = (props) => {
+  const [profile, setProfile] = useState({
+    avatar: '/static/images/avatars/avatar_6.png',
+    username: 'sample username',
+    email: 'sample email'
+  })
+
+  useEffect(() => {
+    setProfile({avatar: '/static/images/avatars/avatar_6.png',
+    // city: 'Los Angeles',
+    // country: 'USA',
+    // jobTitle: 'Senior Developer',
+    username: JSON.parse(localStorage.getItem('user')).user.username,
+    email: JSON.parse(localStorage.getItem('user')).user.email})
+  }, [])
+
+  return (
+    <Card {...props}>
+      <CardContent>
+        <Box
           sx={{
-            height: 64,
-            mb: 2,
-            width: 64
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column'
           }}
-        />
-        <Typography
-          color="textPrimary"
-          gutterBottom
-          variant="h5"
         >
-          {user.name}
-        </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
-          {`${user.city} ${user.country}`}
-        </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
-          {user.timezone}
-        </Typography>
-      </Box>
-    </CardContent>
-    <Divider />
-    <CardActions>
-      <Button
-        color="primary"
-        fullWidth
-        variant="text"
-      >
-        Upload picture
-      </Button>
-    </CardActions>
-  </Card>
-);
+          <Avatar
+            src={profile.avatar}
+            sx={{
+              height: 64,
+              mb: 2,
+              width: 64
+            }}
+          />
+          <Typography
+            color="textPrimary"
+            gutterBottom
+            variant="h5"
+          >
+            {profile.username}
+          </Typography>
+          <Typography
+            color="textSecondary"
+            variant="body2"
+          >
+            {`${profile.email}`}
+          </Typography>
+          
+        </Box>
+      </CardContent>
+      <Divider />
+    </Card>
+  )
+};

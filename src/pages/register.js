@@ -53,7 +53,6 @@ const Register = () => {
         )
     }),
     onSubmit: async () => {
-      // console.log("Button submit")
       var body = {
         username: document.getElementById('username').value,
         email: document.getElementById('email').value,
