@@ -66,6 +66,7 @@ async function createPost(router) {
 
 export default function BasicTextFields() {
   const [creating, setCreating] = useState(false);
+  const [filename, setFilename] = useState("");
   const router = useRouter();
   return (
     <>
@@ -85,13 +86,17 @@ export default function BasicTextFields() {
         <label htmlFor="icon-button-file" className="custom-file-upload">
           <IconButton color="primary" aria-label="upload picture" component="span">
             <label htmlFor="contained-button-file">
-            <Input id="contained-button-file" type="file" />
+            <Input id="contained-button-file" type="file" accept="image/*, video/*" onChange={(e)=>setFilename(e.target.files[0].name)}/>
             <Button variant="contained" component="span">
               Upload
             </Button>
           </label>
           &ensp;
+          <div style={{display: 'flex', flexDirection: 'column'}}>
             <h6 style={{fontWeight:500, fontSize:"10px"}}>Maximum File Size: 49MB</h6>
+            <h6 style={{fontWeight:500, fontSize:"10px"}}>{filename}</h6>
+
+          </div>
             
           </IconButton>
         </label>
