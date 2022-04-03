@@ -55,7 +55,7 @@ export const CustomerListToolbar = (props) => {
         </Box>}
       </Box>
       <Box sx={{ mt: 3 }}>
-        <Card>
+        {/* <Card>
           <CardContent>
             <Box sx={{ maxWidth: 500 }}>
               <TextField
@@ -77,7 +77,7 @@ export const CustomerListToolbar = (props) => {
               />
             </Box>
           </CardContent>
-        </Card>
+        </Card> */}
       </Box>
     </Box>
 )};
