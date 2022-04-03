@@ -1,0 +1,39 @@
+.formDesc {
+  width: "75vw";
+  padding: "10px";
+  font-family: "Roboto, sans-serif";
+  font-size: "15px";
+}
+
+@media screen and (min-width: 1240px) {
+    .formDesc {
+        width: 20vw !important
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width:1240px) {
+    .formDesc {
+        width: 25vw !important
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width:1000px) {
+    .formDesc {
+        width: 31vw !important
+    }
+}
+@media screen and (min-width: 600px) and (max-width:800px) {
+    .formDesc {
+        width: 36vw !important
+    }
+}
+@media screen and (min-width: 500px) and (max-width:600px) {
+    .formDesc {
+        width: 48vw !important
+    }
+}
+@media screen and (min-width: 300px) and (max-width:500px) {
+    .formDesc {
+        width: 66vw !important
+    }
+}

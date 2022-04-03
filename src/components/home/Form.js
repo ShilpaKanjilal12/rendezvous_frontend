@@ -80,7 +80,7 @@ export default function BasicTextFields() {
       autoComplete="off"
     > 
       <TextField id="post-name" label="Name of the Post" variant="outlined" />
-      <TextareaAutosize minRows={3} maxRows={10} placeholder="Enter something..." id="standard-basic" label="Description" variant="standard" style={{ width: "75vw", padding: "10px", fontFamily: 'Roboto, sans-serif', fontSize: "15px" }} />
+      <TextareaAutosize minRows={3} maxRows={10} placeholder="Enter something..." id="standard-basic" label="Description" variant="standard" className = "formDesc" />
 
       <Stack direction="row" alignItems="center" spacing={2}>
 
