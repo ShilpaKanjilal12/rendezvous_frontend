@@ -9,7 +9,7 @@ import ScrollButton from './ScrollButton';
  
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-const host = 'http://localhost:8080';
+const host = 'https://rendezvous2022.herokuapp.com';
 import {
   Avatar,
   Box,
@@ -78,7 +78,7 @@ export const PostsListResults = () => {
           </Table>
         </div>}
       {/* </PerfectScrollbar> */}
-      {/* <ScrollButton /> */}
+      <ScrollButton />
     
       {/* <TablePagination
         component="div"

@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const host = 'http://localhost:8080';
+const host = 'https://rendezvous2022.herokuapp.com';
 
 const Register = () => {
   const router = useRouter();

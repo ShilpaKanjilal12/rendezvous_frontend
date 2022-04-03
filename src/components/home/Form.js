@@ -8,7 +8,7 @@ import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/router';
 import {useState} from 'react';
 
-const host = 'http://localhost:8080';
+const host = 'https://rendezvous2022.herokuapp.com';
 
 const Input = styled('input')({
   display: 'none',

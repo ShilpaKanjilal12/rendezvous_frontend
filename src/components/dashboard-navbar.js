@@ -54,7 +54,7 @@ export const DashboardNavbar = (props) => {
           >
             <MenuIcon fontSize="small" />
           </IconButton>
-          <Typography> {loggedin && JSON.parse(localStorage.getItem('user')).username}</Typography> 
+          {/* <Typography> {loggedin && JSON.parse(localStorage.getItem('user')).username}</Typography>  */}
           <a  href="./account">
           <Avatar
             sx={{

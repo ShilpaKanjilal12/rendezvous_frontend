@@ -20,7 +20,7 @@ import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import {useEffect, useState} from 'react';
 
-const host = 'http://localhost:8080';
+const host = 'https://rendezvous2022.herokuapp.com';
 
 var likes;
 

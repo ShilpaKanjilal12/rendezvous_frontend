@@ -12,7 +12,7 @@ import { Facebook as FacebookIcon } from '../icons/facebook';
 import { Google as GoogleIcon } from '../icons/google';
 import { Alert } from '@mui/material';
 
-const host = 'http://localhost:8080';
+const host = 'https://rendezvous2022.herokuapp.com';
 
 const Login = () => {
   const [open, setOpen] = React.useState(false);
