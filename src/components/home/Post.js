@@ -25,12 +25,13 @@ const host = 'https://rendezvous2022.herokuapp.com';
 var likes;
 
 async function deletePost(id){
+  if (window.confirm("Do you really want to delete the post?")) {
   let response = await fetch(`${host}/api/post/delete/${id}`,{
     method:'DELETE',
     headers:{
       authtoken: JSON.parse(localStorage.getItem('user')).authtoken
     }
-  });
+  });}
 
 }
 
