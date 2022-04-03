@@ -63,7 +63,7 @@ const Login = () => {
   return (
     <>
       <Head>
-        <title>Login | Material Kit</title>
+        <title>Login | Rendezvous</title>
       </Head>
       <Box
         component="main"

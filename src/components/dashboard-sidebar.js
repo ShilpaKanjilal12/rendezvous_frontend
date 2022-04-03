@@ -167,6 +167,40 @@ export const DashboardSidebar = (props) => {
         variant="permanent"
       >
         {content}
+        <Divider sx={{ borderColor: '#2D3748' }} />
+      <Box
+        sx={{
+          px: 2,
+          py: 3
+        }}
+      >
+        <Typography
+          color="neutral.100"
+          variant="subtitle2"
+        >
+          Welcome to Rendezvous
+        </Typography>
+        <Typography
+          color="neutral.500"
+          variant="body2"
+        >
+          Share your Coding Experiences with others
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            mt: 2,
+            mx: 'auto',
+            width: '160px',
+            '& img': {
+              width: '100%'
+            }
+          }}
+        >
+          <img src="https://tenor.com/view/code-gif-12924304.gif" />
+        </Box>
+
+      </Box>
       </Drawer>
     );
   }
