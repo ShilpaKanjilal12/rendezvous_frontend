@@ -32,11 +32,11 @@ const items = [
     icon: (<UsersIcon fontSize="small" />),
     title: 'Customers'
   },*/
- /* {
-    href: '/products',
-    icon: (<ShoppingBagIcon fontSize="small" />),
-    title: 'Products'
-  },*/
+  /* {
+     href: '/products',
+     icon: (<ShoppingBagIcon fontSize="small" />),
+     title: 'Products'
+   },*/
   {
     href: '/account',
     icon: (<UserIcon fontSize="small" />),
@@ -86,7 +86,7 @@ export const DashboardSidebar = (props) => {
     [router.asPath]
   );
 
-  const logout=()=>{
+  const logout = () => {
     localStorage.removeItem('user')
     router.push('/');
   }
@@ -102,7 +102,7 @@ export const DashboardSidebar = (props) => {
       >
         <div>
           <Box sx={{ p: 3 }}>
-            
+
           </Box>
           <Box sx={{ px: 2 }}>
             <Box
@@ -116,17 +116,17 @@ export const DashboardSidebar = (props) => {
                 py: '11px',
                 borderRadius: 1
               }}
-              
+
             >
-               
-                <Typography
-                  color="white"
-                  variant="subtitle1"
-                >
-                  Rendezvous <br/>(Celesta 2022)
-                </Typography>
-                
-              
+
+              <Typography
+                color="white"
+                variant="subtitle1"
+              >
+                Rendezvous <br />(Celesta 2022)
+              </Typography>
+
+
             </Box>
           </Box>
         </div>
@@ -146,8 +146,8 @@ export const DashboardSidebar = (props) => {
             />
           ))}
         </Box>
-        <Button variant="contained" sx={{margin: '10px'}} onClick={logout}>Log Out</Button>
-        
+        <Button variant="contained" sx={{ margin: '10px' }} onClick={logout}>Log Out</Button>
+
       </Box>
     </>
   );
@@ -187,42 +187,42 @@ export const DashboardSidebar = (props) => {
       variant="temporary"
     >
       {content}
-    
-<Divider sx={{ borderColor: '#2D3748' }} />
+
+      <Divider sx={{ borderColor: '#2D3748' }} />
+      <Box
+        sx={{
+          px: 2,
+          py: 3
+        }}
+      >
+        <Typography
+          color="neutral.100"
+          variant="subtitle2"
+        >
+          Welcome to Rendezvous
+        </Typography>
+        <Typography
+          color="neutral.500"
+          variant="body2"
+        >
+          Share your Coding Experiences with others
+        </Typography>
         <Box
           sx={{
-            px: 2,
-            py: 3
+            display: 'flex',
+            mt: 2,
+            mx: 'auto',
+            width: '160px',
+            '& img': {
+              width: '100%'
+            }
           }}
         >
-          <Typography
-            color="neutral.100"
-            variant="subtitle2"
-          >
-            Welcome to Rendezvous
-          </Typography>
-          <Typography
-            color="neutral.500"
-            variant="body2"
-          >
-            Share your Coding Experiences with others
-          </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              mt: 2,
-              mx: 'auto',
-              width: '160px',
-              '& img': {
-                width: '100%'
-              }
-            }}
-          >
-            <img src="https://tenor.com/view/code-gif-12924304.gif"/>
-          </Box>
-          
+          <img src="https://tenor.com/view/code-gif-12924304.gif" />
         </Box>
-        </Drawer>
+
+      </Box>
+    </Drawer>
   );
 };
 

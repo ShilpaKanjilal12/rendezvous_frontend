@@ -79,7 +79,7 @@ export default function BasicTextFields() {
       autoComplete="off"
     > 
       <TextField id="post-name" label="Name of the Post" variant="outlined" />
-      <TextField id="standard-basic" label="Description" variant="standard" style={{ width: "50vh" }} />
+      <TextField id="standard-basic" label="Description" variant="standard" />
 
       <Stack direction="row" alignItems="center" spacing={2}>
 
