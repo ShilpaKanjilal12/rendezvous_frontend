@@ -131,7 +131,7 @@ The Company may, in its sole discretion, at any time and for any or no reason, s
 <p><h1 style={heading}>Contact Us</h1></p>
 <p>If you have any questions about this Agreement, You can contact Us:</p>
 <ul>
-<li>By sending us an email: abhaduriperso@gmail.com</li>
+<li>By sending us an email: rendezvouscelesta@gmail.com</li>
 </ul>
 <p></p>
     </Box>
