@@ -10,7 +10,7 @@ import { Users as UsersIcon } from '../icons/users';
 import { Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: "#123443",
   boxShadow: theme.shadows[3]
 }));
 

@@ -63,7 +63,11 @@ export const AccountProfileDetails = (props) => {
       noValidate
       {...props}
     >
-      <Card>
+      <Card
+      sx={{
+        backgroundColor: '#123443',
+        color:'white'
+      }}>
         <CardHeader
           // subheader="The information can be edited"
           title="Profile"
@@ -79,7 +83,7 @@ export const AccountProfileDetails = (props) => {
               md={6}
               xs={12}
             >
-              <TextField
+            <TextField
                 fullWidth
                 // helperText="Please specify the first name"
                 label="Username"
@@ -88,7 +92,9 @@ export const AccountProfileDetails = (props) => {
                 required
                 value={values.username}
                 variant="outlined"
+                sx={{ input: { color: 'white' } }}
               />
+              
             </Grid>
             
             <Grid
@@ -104,6 +110,7 @@ export const AccountProfileDetails = (props) => {
                 required
                 value={values.email}
                 variant="outlined"
+                sx={{ input: { color: 'white' } }}
               />
             </Grid>
             

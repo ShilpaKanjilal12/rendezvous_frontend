@@ -46,13 +46,19 @@ export const AccountProfile = (props) => {
   }, [])
 
   return (
-    <Card {...props}>
+    <Card {...props}
+    sx={{
+      backgroundColor: '#123443',
+      
+    }}
+    >
       <CardContent>
         <Box
           sx={{
             alignItems: 'center',
             display: 'flex',
             flexDirection: 'column'
+            
           }}
         >
           <Avatar aria-label="recipe" sx={{ bgcolor: red[500], width: 67, height: 67}}>
@@ -64,7 +70,7 @@ export const AccountProfile = (props) => {
             </Avatar>
           <Typography
             marginTop={2}
-            color="textPrimary"
+            color="white"
             gutterBottom
             variant="h5"
           >

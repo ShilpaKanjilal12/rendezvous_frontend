@@ -61,14 +61,13 @@ export default function RecipeReviewCard(props) {
   var src2=src;
   return (<>
     <div className="container-fluid">
-      <Card style={{ width: "75vw" }}>
+      <Card style={{ width: "72vw", backgroundColor:"#123443",color:'white' }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
               {props.uname.charAt(0)}
             </Avatar>
           }
-         
           title={props.name}
           subheader={"Posted by " + props.uname + " | " + props.date }
         />
@@ -78,20 +77,20 @@ export default function RecipeReviewCard(props) {
               component="img"
               // height="194"
               image={src}
-              alt="Paella dish"
+              alt="image"
             /> : <CardMedia
             controls={true}
               component="video"
               // height="194"
               image={src}
               
-              alt="Paella dish"
+              alt="video"
             />
           }
 
         </CardActionArea>}
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body1" color="white">
 
             {props.text}
           </Typography>
