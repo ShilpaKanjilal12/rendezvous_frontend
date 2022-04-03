@@ -131,7 +131,7 @@ export default function BasicTextFields() {
         </Button>
       <Snackbar
         open={open}
-        style={{top: '400px'}}
+        style={{top: '100%'}}
         >
         <Alert severity="error" sx={{ width: '100%'}}>
           {error}
