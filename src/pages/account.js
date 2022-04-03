@@ -69,6 +69,7 @@ const Account = () => (
           }}
         ><TypeAnimation
         cursor={true}
+        wrapper = "div"
         sequence={[
           'Coding is Fun',
           2000,
@@ -77,7 +78,6 @@ const Account = () => (
           'Learn More...',
           2000
         ]}
-        wrapper="a"
         repeat={3}
        />
       </Box>

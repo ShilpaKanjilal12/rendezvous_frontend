@@ -96,12 +96,12 @@ export default function RecipeReviewCard(props) {
           </Typography>
         </CardContent>
 
-        <CardActions disableSpacing>
+        <CardActions disableSpacing >
           {/* <IconButton aria-label="add to favorites">
             <FavoriteIcon id="likebtn"/>
           </IconButton> */}
-          {localStorage.getItem('user') && <Button onClick={()=>{likePost(props.id, setLikes)}}>💗 {likes}</Button>}
-          {localStorage.getItem('user') && props.uname.localeCompare(JSON.parse(localStorage.getItem('user')).user.username)===0 && <Button onClick={()=>{
+          {localStorage.getItem('user') && <Button style={{color: '#72a2d4'}} onClick={()=>{likePost(props.id, setLikes)}}>💗 {likes}</Button>}
+          {localStorage.getItem('user') && props.uname.localeCompare(JSON.parse(localStorage.getItem('user')).user.username)===0 && <Button style={{color: '#123443', background: '#f44336'}} onClick={()=>{
             deletePost(props.id)
             
           router.push('/');}}>Delete Post</Button>}
