@@ -68,11 +68,7 @@ export default function RecipeReviewCard(props) {
               {props.uname.charAt(0)}
             </Avatar>
           }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
+         
           title={props.name}
           subheader={"Posted by " + props.uname + " | " + props.date }
         />

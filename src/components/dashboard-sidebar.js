@@ -187,15 +187,8 @@ export const DashboardSidebar = (props) => {
       variant="temporary"
     >
       {content}
-    </Drawer>
-  );
-};
-
-DashboardSidebar.propTypes = {
-  onClose: PropTypes.func,
-  open: PropTypes.bool
-};
-/*<Divider sx={{ borderColor: '#2D3748' }} />
+    
+<Divider sx={{ borderColor: '#2D3748' }} />
         <Box
           sx={{
             px: 2,
@@ -206,13 +199,13 @@ DashboardSidebar.propTypes = {
             color="neutral.100"
             variant="subtitle2"
           >
-            Need more features?
+            Welcome to Rendezvous
           </Typography>
           <Typography
             color="neutral.500"
             variant="body2"
           >
-            Check out our Pro solution template.
+            Share your Coding Experiences with others
           </Typography>
           <Box
             sx={{
@@ -225,24 +218,15 @@ DashboardSidebar.propTypes = {
               }
             }}
           >
-            <img
-              alt="Go to pro"
-              src="/static/images/sidebar_pro.png"
-            />
+            <img src="https://tenor.com/view/code-gif-12924304.gif"/>
           </Box>
-          <NextLink
-            href="https://material-kit-pro-react.devias.io/"
-            passHref
-          >
-            <Button
-              color="secondary"
-              component="a"
-              endIcon={(<OpenInNewIcon />)}
-              fullWidth
-              sx={{ mt: 2 }}
-              variant="contained"
-            >
-              Pro Live Preview
-            </Button>
-          </NextLink>
-        </Box>*/
+          
+        </Box>
+        </Drawer>
+  );
+};
+
+DashboardSidebar.propTypes = {
+  onClose: PropTypes.func,
+  open: PropTypes.bool
+};
