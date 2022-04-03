@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
-
+import { red } from '@mui/material/colors';
 // const user = {
 //   avatar: '/static/images/avatars/avatar_6.png',
 //   // city: 'Los Angeles',
@@ -55,15 +55,15 @@ export const AccountProfile = (props) => {
             flexDirection: 'column'
           }}
         >
-          <Avatar
-            src={profile.avatar}
-            sx={{
-              height: 64,
-              mb: 2,
-              width: 64
-            }}
-          />
+          <Avatar aria-label="recipe" sx={{ bgcolor: red[500], width: 67, height: 67}}>
           <Typography
+            fontSize={35}
+           >
+            {profile.username.charAt(0)}
+            </Typography>
+            </Avatar>
+          <Typography
+            marginTop={2}
             color="textPrimary"
             gutterBottom
             variant="h5"
@@ -73,6 +73,7 @@ export const AccountProfile = (props) => {
           <Typography
             color="textSecondary"
             variant="body2"
+            
           >
             {`${profile.email}`}
           </Typography>

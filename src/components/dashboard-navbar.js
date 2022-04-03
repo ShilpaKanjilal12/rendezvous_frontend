@@ -8,7 +8,7 @@ import { Bell as BellIcon } from '../icons/bell';
 import { UserCircle as UserCircleIcon } from '../icons/user-circle';
 import { Users as UsersIcon } from '../icons/users';
 import { Typography } from '@mui/material';
-
+import { red } from '@mui/material/colors';
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   boxShadow: theme.shadows[3]
@@ -16,11 +16,13 @@ const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
 
 export const DashboardNavbar = (props) => {
   const { onSidebarOpen, ...other } = props;
-
+  const [username,setUsername] = useState("");
   const [loggedin, setLoggedin] = useState(false);
 
   useEffect(() => {
-    if(localStorage.getItem('user')) {setLoggedin(true);}
+    if(localStorage.getItem('user')) {setLoggedin(true);
+      setUsername(JSON.parse(localStorage.getItem('user')).user.username);
+ }
   }, [])
   
   return (
@@ -55,20 +57,17 @@ export const DashboardNavbar = (props) => {
             <MenuIcon fontSize="small" />
           </IconButton>
           {/* <Typography> {loggedin && JSON.parse(localStorage.getItem('user')).username}</Typography>  */}
-          <a  href="./account">
-          <Avatar
-            sx={{
-              height: 40,
-              width: 40,
-              ml: 1,
-              marginLeft:"70vw"
-            }}
-            src="https://www.logolynx.com/images/logolynx/4b/4beebce89d681837ba2f4105ce43afac.png"
-            
-          >
-            
-            <UserCircleIcon fontSize="small" />
-          </Avatar>
+          <a  href="./account" style={{textDecoration:"none"}}>
+          
+          <Avatar aria-label="recipe" sx={{ bgcolor: red[500], width: 40, height: 40, marginLeft:"70vw"}}>
+          <Typography
+            fontSize={25}
+          
+           >
+            {username.charAt(0)}
+            </Typography>
+            </Avatar>
+          
           </a>
         </Toolbar>
       </DashboardNavbarRoot>
