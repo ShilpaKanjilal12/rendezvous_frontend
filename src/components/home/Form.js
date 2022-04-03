@@ -82,7 +82,7 @@ export default function BasicTextFields() {
 
       <Stack direction="row" alignItems="center" spacing={2}>
 
-        <label htmlFor="icon-button-file" class="custom-file-upload">
+        <label htmlFor="icon-button-file" className="custom-file-upload">
           <IconButton color="primary" aria-label="upload picture" component="span">
             <label htmlFor="contained-button-file">
             <Input id="contained-button-file" type="file" />
