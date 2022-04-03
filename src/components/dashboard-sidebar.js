@@ -105,6 +105,7 @@ export const DashboardSidebar = (props) => {
 
           </Box>
           <Box sx={{ px: 2 }}>
+            <NextLink href='/'>
             <Box
               sx={{
                 alignItems: 'center',
@@ -119,15 +120,16 @@ export const DashboardSidebar = (props) => {
 
             >
 
-              <Typography
-                color="white"
-                variant="subtitle1"
-              >
-                Rendezvous <br />(Celesta 2022)
-              </Typography>
+                <Typography
+                  color="white"
+                  variant="subtitle1"
+                >
+                  Rendezvous <br />(Celesta 2022)
+                </Typography>
 
 
             </Box>
+              </NextLink>
           </Box>
         </div>
         <Divider
@@ -168,39 +170,39 @@ export const DashboardSidebar = (props) => {
       >
         {content}
         <Divider sx={{ borderColor: '#2D3748' }} />
-      <Box
-        sx={{
-          px: 2,
-          py: 3
-        }}
-      >
-        <Typography
-          color="neutral.100"
-          variant="subtitle2"
-        >
-          Welcome to Rendezvous
-        </Typography>
-        <Typography
-          color="neutral.500"
-          variant="body2"
-        >
-          Share your Coding Experiences with others
-        </Typography>
         <Box
           sx={{
-            display: 'flex',
-            mt: 2,
-            mx: 'auto',
-            width: '160px',
-            '& img': {
-              width: '100%'
-            }
+            px: 2,
+            py: 3
           }}
         >
-          <img src="https://tenor.com/view/code-gif-12924304.gif" />
-        </Box>
+          <Typography
+            color="neutral.100"
+            variant="subtitle2"
+          >
+            Welcome to Rendezvous
+          </Typography>
+          <Typography
+            color="neutral.500"
+            variant="body2"
+          >
+            Share your Coding Experiences with others
+          </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              mt: 2,
+              mx: 'auto',
+              width: '160px',
+              '& img': {
+                width: '100%'
+              }
+            }}
+          >
+            <img src="https://tenor.com/view/code-gif-12924304.gif" />
+          </Box>
 
-      </Box>
+        </Box>
       </Drawer>
     );
   }
