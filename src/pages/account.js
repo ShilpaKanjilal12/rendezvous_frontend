@@ -3,12 +3,14 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import { AccountProfile } from '../components/account/account-profile';
 import { AccountProfileDetails } from '../components/account/account-profile-details';
 import { DashboardLayout } from '../components/dashboard-layout';
-
+import { Card,CardContent } from '@mui/material';
+import TypeAnimation from 'react-type-animation';
+import { fontSize } from '@mui/system';
 const Account = () => (
   <>
     <Head>
       <title>
-        Account | Material Kit
+        Account 
       </title>
     </Head>
     <Box
@@ -46,6 +48,40 @@ const Account = () => (
             <AccountProfileDetails />
           </Grid>
         </Grid>
+      </Container>
+      <Container>
+        <Box>
+          <Card
+          sx={{
+            marginTop:'40px',
+            backgroundColor:'#123443'
+          }}
+          >
+          <CardContent>
+          <Box
+          sx={{
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            fontSize: '30px',
+            fontWeight:'800',
+            color:'white'
+          }}
+        ><TypeAnimation
+        cursor={true}
+        sequence={[
+          'Coding is Fun',
+          2000,
+          'Share your Experiences with others...',
+          2000,
+          'Learn More...',
+          2000
+        ]}
+        wrapper="a"
+        repeat={3}
+       />
+      </Box>
+            </CardContent></Card></Box>
       </Container>
     </Box>
   </>
