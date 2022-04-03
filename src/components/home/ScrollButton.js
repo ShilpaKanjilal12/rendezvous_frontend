@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {FaArrowCircleUp} from 'react-icons/fa';
 import { Button } from './Styles';
 
@@ -25,7 +25,9 @@ const scrollToTop = () =>{
 	});
 };
 
-window.addEventListener('scroll', toggleVisible);
+useEffect(() => {
+	window.addEventListener('scroll', toggleVisible);
+}, [])
 
 return (
 	<Button>
