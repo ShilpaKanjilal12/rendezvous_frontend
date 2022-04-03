@@ -23,7 +23,7 @@ const Dashboard = () => {
     <>
       <Head>
         <title>
-          Dashboard | Material Kit
+          Rendezvous | Celesta 2022
         </title>
       </Head>
       {/* <Box
