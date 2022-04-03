@@ -1,8 +1,7 @@
 .formDesc {
-  width: "75vw";
-  padding: "10px";
-  font-family: "Roboto, sans-serif";
-  font-size: "15px";
+  padding: "10px" !important;
+  font-family: "Roboto, sans-serif" !important;
+  font-size: "15px" !important;
 }
 
 @media screen and (min-width: 1240px) {
