@@ -3,6 +3,7 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import { useRouter } from 'next/router';
@@ -79,7 +80,7 @@ export default function BasicTextFields() {
       autoComplete="off"
     > 
       <TextField id="post-name" label="Name of the Post" variant="outlined" />
-      <TextField id="standard-basic" label="Description" variant="standard" style={{ width: "50vh" }} />
+      <TextareaAutosize minRows={3} maxRows={10} placeholder="Enter something..." id="standard-basic" label="Description" variant="standard" style={{ width: "45vh", padding: "10px", fontFamily: 'Roboto, sans-serif', fontSize: "15px" }} />
 
       <Stack direction="row" alignItems="center" spacing={2}>
 
