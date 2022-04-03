@@ -131,7 +131,7 @@ const Register = () => {
               error={Boolean(formik.touched.username && formik.errors.username)}
               fullWidth
               helperText={formik.touched.username && formik.errors.username}
-              label="username"
+              label="Username"
               margin="normal"
               name="username"
               onBlur={formik.handleBlur}

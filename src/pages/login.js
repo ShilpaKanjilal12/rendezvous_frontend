@@ -98,7 +98,7 @@ const Login = () => {
                 color="textSecondary"
                 variant="body1"
               >
-                Login with username
+                Login with Username
               </Typography>
             </Box>
             <TextField
@@ -106,7 +106,7 @@ const Login = () => {
               error={Boolean(formik.touched.text && formik.errors.text)}
               fullWidth
               helperText={formik.touched.text && formik.errors.text}
-              label="username"
+              label="Username"
               margin="normal"
               name="username"
               onBlur={formik.handleBlur}
